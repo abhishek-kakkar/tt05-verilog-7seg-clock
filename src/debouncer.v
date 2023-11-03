@@ -10,13 +10,13 @@ module debouncer(
     parameter TIME_PERIOD = 500_000;
 
     reg r_btn, r_aux;
-    reg [7:0] timer;
+    reg [19:0] timer;
 
     always @(posedge i_clk) begin
         if (i_rst) begin
-            { r_btn, r_aux } = 2'b00;
-            timer = 0;
-            o_debounced = 0;
+            { r_btn, r_aux } <= 2'b00;
+            timer <= 0;
+            o_debounced <= 0;
         end else begin
             // 2FF sync
             {r_btn, r_aux} <= {r_aux, i_btn};

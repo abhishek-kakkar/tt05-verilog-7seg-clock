@@ -58,6 +58,9 @@ module tt_um_7segx4_clock_abhishek_top #( parameter MAX_COUNT = 10_000_000 ) (
     assign uo_out[2] = latch_en_out;
     assign uo_out[3] = clkHalfHz_out;
 
+    assign uio_out = 8'b11111111;
+    assign uio_oe = 8'b11111111;
+
     // external clock is 8.192kHz, so need 14 bit counter
     reg [24:0] second_counter;
 
@@ -72,7 +75,7 @@ module tt_um_7segx4_clock_abhishek_top #( parameter MAX_COUNT = 10_000_000 ) (
     //   switch screen from state 0 to state 1 and return in 3 seconds
     localparam REVERT_SECONDS = 3;
     localparam REVERT_SECOND_BITS = $clog2(REVERT_SECONDS);
-    reg [$clog2(REVERT_SECOND_BITS)-1:0] revert_timer;
+    reg [3:0] revert_timer;
 
     wire second_pulse = second_counter == MAX_COUNT;
     wire sec_to_min;
