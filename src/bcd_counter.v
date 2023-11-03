@@ -25,9 +25,9 @@ module bcd_counter #(
 
     always @(posedge clk_i) begin
         if (rst_i) begin
-            count_ones_reg = 4'b0;
-            count_tens_reg = 4'b0;
-            count_reg = 7'b0;
+            count_ones_reg <= 4'b0;
+            count_tens_reg <= 4'b0;
+            count_reg <= 7'b0;
         end else if (increment_i) begin
             if (count_reg == MAX_COUNT) begin
                 ovf <= 1;
