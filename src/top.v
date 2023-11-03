@@ -57,6 +57,7 @@ module tt_um_7segx4_clock_abhishek_top #( parameter MAX_COUNT = 10_000_000 ) (
     assign uo_out[1] = data_out;
     assign uo_out[2] = latch_en_out;
     assign uo_out[3] = clkHalfHz_out;
+    assign uo_out[7:4] = 4'b0;
 
     assign uio_out = 8'b11111111;
     assign uio_oe = 8'b11111111;
